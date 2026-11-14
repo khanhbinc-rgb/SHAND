@@ -1,0 +1,263 @@
+
+.login-page {
+  min-height: 100vh;
+  padding: 40px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  color: #171717;
+  font-family: inherit;
+}
+
+.login-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.login-back {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: #666;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.login-back:hover {
+  color: #171717;
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 28px;
+  font-size: 25px;
+  font-weight: 850;
+  letter-spacing: -1px;
+}
+
+.login-logo-mark {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: #171717;
+  color: #fff;
+  font-size: 23px;
+}
+
+.login-logo-dot {
+  color: #e53935;
+}
+
+.login-card h1 {
+  margin: 0 0 9px;
+  font-size: 25px;
+  line-height: 1.3;
+  letter-spacing: -0.7px;
+}
+
+.login-subtitle {
+  margin: 0 0 28px;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-form > label {
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.login-form > input {
+  width: 100%;
+  height: 46px;
+  padding: 0 13px;
+  border: 1px solid #dedede;
+  border-radius: 9px;
+  outline: none;
+  background: #fff;
+  color: #171717;
+  font: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.login-form > input:focus {
+  border-color: #171717;
+  box-shadow: 0 0 0 3px rgba(23, 23, 23, 0.06);
+}
+
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 5px 0 10px;
+  font-size: 12px;
+}
+
+.remember-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #555;
+}
+
+.forgot-password {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #171717;
+  font: inherit;
+  cursor: pointer;
+}
+
+.login-submit {
+  height: 47px;
+  border: 1px solid #171717;
+  border-radius: 10px;
+  background: #171717;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-submit:hover {
+  background: #333;
+}
+
+.login-separator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 25px 0 18px;
+  color: #888;
+  font-size: 12px;
+}
+
+.login-separator::before,
+.login-separator::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e9e9e9;
+}
+
+.login-socials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.login-socials button {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid #dedede;
+  border-radius: 9px;
+  background: #fff;
+  color: #222;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.login-socials button:hover {
+  background: #f8f8f8;
+}
+
+.google-letter {
+  color: #4285f4;
+  font-size: 18px;
+}
+
+.facebook-letter {
+  color: #1877f2;
+  font-size: 21px;
+}
+
+.login-register {
+  margin: 25px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
+
+.login-register a {
+  color: #171717;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-register a:hover {
+  text-decoration: underline;
+}
+
+.login-terms {
+  margin: 23px 0 0;
+  color: #999;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .login-page {
+    padding: 16px 12px;
+    align-items: flex-start;
+  }
+
+  .login-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .login-card h1 {
+    font-size: 23px;
+  }
+}
+.login-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 12px 0 20px;
+}
+
+.login-logo img {
+  display: block;
+  width: 190px;
+  height: auto;
+  object-fit: contain;
+}
+.login-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-back-icon {
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+  display: block;
+}
