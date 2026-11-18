@@ -1,20 +1,52 @@
 
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from './assets/logo-shand.png'
+import { supabase } from './lib/supabase'
 import './Login.css'
 
 function Login() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleGoogleLogin = async () => {
+    try {
+      setLoading(true)
+      setError('')
+
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/`,
+          queryParams: {
+            prompt: 'select_account',
+          },
+        },
+      })
+
+      if (error) throw error
+    } catch (err) {
+      setError(err.message || 'Không thể đăng nhập Google.')
+      setLoading(false)
+    }
+  }
+
   return (
     <div className="login-page">
       <div className="login-card">
-        <Link to="/" className="login-back">
-  <img src="/icon%20back.png" alt="" className="login-back-icon" />
-  <span>Quay lại</span>
-</Link>
 
-<Link to="/" className="login-logo">
-  <img src={logo} alt="SHAND Logo" />
-</Link>
+        <Link to="/" className="login-back">
+          <img
+            src="/icon%20back.png"
+            alt=""
+            className="login-back-icon"
+          />
+          <span>Quay lại</span>
+        </Link>
+
+        <Link to="/" className="login-logo">
+          <img src={logo} alt="SHAND Logo" />
+        </Link>
 
         <h1>Chào mừng bạn trở lại!</h1>
 
@@ -26,20 +58,21 @@ function Login() {
           className="login-form"
           onSubmit={(event) => {
             event.preventDefault()
-            alert('Phần xác thực tài khoản sẽ được tích hợp ở bước tiếp theo.')
+            alert('SHAND hiện hỗ trợ đăng nhập bằng Google.')
           }}
         >
           <label htmlFor="phone">Đăng nhập/Đăng ký</label>
+
           <input
             id="phone"
-            type="tel"
+            type="email"
             placeholder="Email"
-            pattern="[0-9]{10,11}"
-            title="Nhập số điện thoại gồm 10–11 chữ số"
+            autoComplete="email"
             required
           />
 
           <label htmlFor="password">Mật khẩu</label>
+
           <input
             id="password"
             type="password"
@@ -58,7 +91,7 @@ function Login() {
               type="button"
               className="forgot-password"
               onClick={() =>
-                alert('Chức năng khôi phục mật khẩu sẽ được bổ sung sau.')
+                alert('SHAND hiện hỗ trợ đăng nhập bằng Google.')
               }
             >
               Quên mật khẩu?
@@ -74,18 +107,27 @@ function Login() {
           <span>Hoặc tiếp tục với</span>
         </div>
 
+        {error && (
+          <p role="alert" style={{ color: '#d93025', fontSize: '13px' }}>
+            {error}
+          </p>
+        )}
+
         <div className="login-socials">
           <button
             type="button"
-            onClick={() => alert('Đăng nhập Google sẽ được tích hợp sau.')}
+            onClick={handleGoogleLogin}
+            disabled={loading}
           >
             <strong className="google-letter">G</strong>
-            Google
+            {loading ? 'Đang kết nối...' : 'Google'}
           </button>
 
           <button
             type="button"
-            onClick={() => alert('Đăng nhập Facebook sẽ được tích hợp sau.')}
+            onClick={() =>
+              alert('Đăng nhập Facebook sẽ được tích hợp sau.')
+            }
           >
             <strong className="facebook-letter">f</strong>
             Facebook
@@ -100,6 +142,7 @@ function Login() {
         <p className="login-terms">
           Bằng việc tiếp tục, bạn đồng ý với các chính sách của SHAND.
         </p>
+
       </div>
     </div>
   )
